@@ -400,7 +400,8 @@ def ajax_add_supplier(request):
         name = request.POST.get('name')
         location = request.POST.get('location')
         country_code = request.POST.get('country_code', 'pk')
-        is_verified = request.POST.get('is_verified') == 'true'
+        is_verified_val = request.POST.get('is_verified')
+        is_verified = is_verified_val in ['true', 'True', 'on', '1']
 
         if name:
             obj, created = Supplier.objects.get_or_create(name=name, defaults={'location': location, 'country_code': country_code, 'is_verified': is_verified})
