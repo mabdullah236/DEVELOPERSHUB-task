@@ -186,11 +186,10 @@
                 {% for product in featured_products%}
                 <a href="{% url 'product_detail' product.id%}" style="text-decoration: none; color: inherit;">
                     <div class="rec-card card">
-                        <p>Test Path: {{ product.image }}</p>
+                        <p style="font-weight:bold">{{ product.name }}</p>
                         <img src="/media/{{ product.image }}" alt="{{ product.name }}">
                         <div class="rec-info">
                             <span class="price">PKR{{product.new_price}}</span>
-                            <p>{{product.name}}</p>
                         </div>
                     </div>
                 </a>
