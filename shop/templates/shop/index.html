@@ -109,7 +109,11 @@
             <div class="deals-products">
                 {% for deal in deals %}
                 <div class="deal-item">
-                    <img src="/media/{{ deal.image }}" alt="{{ deal.name }}">
+                    {% if deal.image %}
+                        <img src="{{ deal.image.url }}" alt="{{ deal.name }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/300" alt="No Image">
+                    {% endif %}
                     <p class="product-name" title="{{ deal.name }}">{{ deal.name|truncatechars:32 }}</p>
                     <span class="discount-badge">-{{ deal.discount_percentage }}%</span>
                 </div>
@@ -132,7 +136,11 @@
                         <h4>{{ product.name|truncatechars:15 }}</h4> 
                         <p>From<br>PKR {{ product.new_price }}</p>
                     </div>
-                    <img src="/media/{{ product.image }}" alt="{{ product.name }}">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/300" alt="No Image">
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
@@ -152,7 +160,11 @@
                         <h4>{{ product.name|truncatechars:15 }}</h4>
                         <p>From<br>PKR {{ product.new_price }}</p>
                     </div>
-                    <img src="/media/{{ product.image }}" alt="{{ product.name }}">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/300" alt="No Image">
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
@@ -187,7 +199,11 @@
                 <a href="{% url 'product_detail' product.id%}" style="text-decoration: none; color: inherit;">
                     <div class="rec-card card">
                         <p style="font-weight:bold">{{ product.name }}</p>
-                        <img src="/media/{{ product.image }}" alt="{{ product.name }}">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/300" alt="No Image">
+                        {% endif %}
                         <div class="rec-info">
                             <span class="price">PKR{{product.new_price}}</span>
                         </div>

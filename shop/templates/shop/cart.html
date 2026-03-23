@@ -12,7 +12,11 @@
                     {% for item in cart_items %}
                     <div class="cart-item">
                         <div class="cart-item-img">
-                            <img src="/media/{{ item.product.image }}" alt="{{ item.product.name }}">
+                            {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                            {% else %}
+                                <img src="https://via.placeholder.com/300" alt="No Image">
+                            {% endif %}
                         </div>
                         <div class="cart-item-info">
                             <div class="cart-item-title-row" style="display: flex; justify-content: space-between; align-items: flex-start;">
@@ -125,7 +129,11 @@
                 {% for save in saved_items %}
                 <div class="saved-item">
                     <div class="saved-img">
-                        <img src="/media/{{ save.product.image }}" alt="{{ save.product.name }}">
+                        {% if save.product.image %}
+                            <img src="{{ save.product.image.url }}" alt="{{ save.product.name }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/300" alt="No Image">
+                        {% endif %}
                     </div>
                     <div class="saved-price" style="font-weight:500; font-size:15px">PKR {{ save.product.new_price }}</div>
                     <div class="saved-title text-muted" style="height: 40px; overflow: hidden; font-weight:bold">{{ save.product.name|truncatechars:40 }}</div>

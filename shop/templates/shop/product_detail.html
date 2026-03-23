@@ -12,13 +12,28 @@
         <div class="card product-overview">
             <div class="overview-gallery">
                 <div class="main-image">
-                    <img src="/media/{{product.image}}" alt="{{product.name}}">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/300" alt="No Image">
+                    {% endif %}
                 </div>
                 <div class="thumbnail-list">
-                    <div class="thumb active"><img src="/media/{{product.image}}" alt="{{product.name}}"></div>
-                    
+                    <div class="thumb active">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/300" alt="No Image">
+                        {% endif %}
+                    </div>
                     {% for img in product.gallery_images.all %}
-                        <div class="thumb"><img src="/media/{{img.image}}" alt="{{product.name}}"></div>
+                        <div class="thumb">
+                            {% if img.image %}
+                                <img src="{{ img.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <img src="https://via.placeholder.com/300" alt="No Image">
+                            {% endif %}
+                        </div>
                     {% endfor %}
                 </div>
             </div>
@@ -173,7 +188,13 @@
                     {% for p in like %}
                         <a href="{% url 'product_detail' p.id %}" style="text-decoration: none; color: inherit;">
                             <div class="like-item">
-                                <div class="like-img"><img src="/media/{{p.image}}" alt="{{p.name}}"></div>
+                                <div class="like-img">
+                                    {% if p.image %}
+                                        <img src="{{ p.image.url }}" alt="{{ p.name }}">
+                                    {% else %}
+                                        <img src="https://via.placeholder.com/300" alt="No Image">
+                                    {% endif %}
+                                </div>
                                 <div class="like-info">
                                     <h4>{{p.name}}</h4>
                                     <div class="price text-muted">PKR {{p.price}}</div>
@@ -191,7 +212,13 @@
                 {% for p in related_products %}
                     <a href="{% url 'product_detail' p.id %}" style="text-decoration: none; color: inherit;">
                         <div class="related-item">
-                            <div class="rel-img"><img src="/media/{{p.image}}" alt="{{p.name}}"></div>
+                            <div class="rel-img">
+                                {% if p.image %}
+                                    <img src="{{ p.image.url }}" alt="{{ p.name }}">
+                                {% else %}
+                                    <img src="https://via.placeholder.com/300" alt="No Image">
+                                {% endif %}
+                            </div>
                             <div class="rel-title">{{p.name}}</div>
                             <div class="rel-price text-muted">PKR {{p.price}}</div>
                         </div>
