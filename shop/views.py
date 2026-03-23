@@ -123,9 +123,9 @@ def product_list(request):
     min_price = request.GET.get('min_price')
     max_price = request.GET.get('max_price')
     if min_price:
-        all_products = all_products.filter(price__gte=min_price)
+        all_products = all_products.filter(new_price__gte=min_price)
     if max_price:
-        all_products = all_products.filter(price__lte=max_price)
+        all_products = all_products.filter(new_price__lte=max_price)
         
     condition = request.GET.get('condition')
     if condition and condition != 'Any':
