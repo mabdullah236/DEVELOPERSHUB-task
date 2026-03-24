@@ -128,9 +128,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dpjqqy5po',
-    'API_KEY': '138192851276373',
-    'API_SECRET': '25TTKUmu97QH-D10hloJvqSbQXA',
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUD_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUD_API_SECRET'),
     'SECURE': True,
 }
 
